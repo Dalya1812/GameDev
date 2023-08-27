@@ -13,19 +13,36 @@ public class InstructionsController : MonoBehaviour
         ShowInstructions();
     }
 
+
+
     private void ShowInstructions()
     {
-        instructionsCanvas.SetActive(true);
-        mazeGameObject.SetActive(false); 
+        if (instructionsCanvas != null)
+        {
+            instructionsCanvas.SetActive(true);
+        }
+
+        if (mazeGameObject != null)
+        {
+            mazeGameObject.SetActive(false);
+        }
+
         Invoke("HideInstructions", instructionsDuration);
     }
 
+
     private void HideInstructions()
     {
-        instructionsCanvas.SetActive(false);
-        mazeGameObject.SetActive(true); 
-    }
+        if (instructionsCanvas != null)
+        {
+            instructionsCanvas.SetActive(false);
+        }
 
+        if (mazeGameObject != null)
+        {
+            mazeGameObject.SetActive(true);
+        }
+    }
 
 
 }
