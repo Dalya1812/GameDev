@@ -21,12 +21,20 @@ public class PlayerMovements : MonoBehaviour
     {
         float moveDirection = Input.GetAxis("Horizontal");
         float moveDirectionY = Input.GetAxis("Vertical");
+
+        if (Mathf.Abs(moveDirection) > Mathf.Abs(moveDirectionY))
+        {
+            moveDirectionY = 0f; 
+        }
+        else
+        {
+            moveDirection = 0f; 
+        }
+
         Vector2 moveVelocity = new Vector2(moveDirection * moveSpeed, moveDirectionY * moveSpeed);
 
-        // Calculate the target position
         Vector2 targetPosition = rb.position + moveVelocity * Time.fixedDeltaTime;
 
-        // Perform a raycast to check for obstacles before moving
         RaycastHit2D hit = Physics2D.Raycast(rb.position, moveVelocity.normalized, moveVelocity.magnitude * Time.fixedDeltaTime);
         if (hit.collider == null || !hit.collider.CompareTag("Maze"))
         {
