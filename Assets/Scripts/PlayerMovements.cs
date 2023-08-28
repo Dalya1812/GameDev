@@ -10,6 +10,8 @@ public class PlayerMovements : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        rb.freezeRotation = true;
     }
 
     void Update()
@@ -24,11 +26,11 @@ public class PlayerMovements : MonoBehaviour
 
         if (Mathf.Abs(moveDirection) > Mathf.Abs(moveDirectionY))
         {
-            moveDirectionY = 0f; 
+            moveDirectionY = 0f;
         }
         else
         {
-            moveDirection = 0f; 
+            moveDirection = 0f;
         }
 
         Vector2 moveVelocity = new Vector2(moveDirection * moveSpeed, moveDirectionY * moveSpeed);

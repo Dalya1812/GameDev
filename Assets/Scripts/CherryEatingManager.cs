@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WinManager : MonoBehaviour
+public class CherryEatingManager : MonoBehaviour
 {
     public GameObject cherry; 
 
@@ -19,7 +19,7 @@ public class WinManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("You Win");
+            Debug.Log("Nice");
 
             if (cherry != null)
             {
