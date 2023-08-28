@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CherryEatingManager : MonoBehaviour
 {
-    public GameObject cherry; 
+    public GameObject cherry;
+    public static event System.Action CherryEaten; 
 
     private void Start()
     {
-
-        if (cherry != null)
+        if (cherry != null && !cherry.activeSelf)
         {
             cherry.SetActive(true);
         }
@@ -21,9 +21,11 @@ public class CherryEatingManager : MonoBehaviour
         {
             Debug.Log("Nice");
 
-            if (cherry != null)
+            if (cherry != null && cherry.activeSelf)
             {
                 cherry.SetActive(false);
+
+                CherryEaten?.Invoke();
             }
         }
     }
