@@ -5,7 +5,7 @@ using UnityEngine;
 public class CherryEatingManager : MonoBehaviour
 {
     public GameObject cherry;
-    public static event System.Action CherryEaten; 
+    public static event System.Action CherryEaten;
 
     private void Start()
     {
@@ -19,8 +19,6 @@ public class CherryEatingManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Nice");
-
             if (cherry != null && cherry.activeSelf)
             {
                 cherry.SetActive(false);
