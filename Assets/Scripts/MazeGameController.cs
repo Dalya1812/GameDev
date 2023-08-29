@@ -14,10 +14,8 @@ public class MazeGameController : MonoBehaviour
 
     private void Start()
     {
- 
         introFinished = true;
         PlaceCherries(3);
-
     }
 
     private void Update()
@@ -47,7 +45,6 @@ public class MazeGameController : MonoBehaviour
     {
         cherriesCollected++;
         Destroy(cherry);
-
         if (cherriesCollected < 3)
         {
             PlaceCherries(1); 
