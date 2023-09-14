@@ -1,34 +1,41 @@
 using UnityEngine;
-using System.Collections;
 
 public class EnemyController : MonoBehaviour
 {
     public float moveSpeed = 2f;
-    public float moveDistance = 5f; 
-    
+    public float moveDistance = 20f;
+
     private Vector3 initialPosition;
-    private int moveDirection = 1;
+    private Vector3 targetPosition;
+    private bool movingRight = true;
 
     private void Start()
     {
         initialPosition = transform.position;
-        StartCoroutine(MoveBackAndForth());
+        targetPosition = initialPosition + Vector3.right * moveDistance;
     }
 
-    private IEnumerator MoveBackAndForth()
+    private void Update()
     {
-        while (true)
+        float step = moveSpeed * Time.deltaTime;
+
+        if (movingRight)
         {
-            transform.Translate(Vector3.right * moveSpeed * moveDirection * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
 
-            if (Mathf.Abs(transform.position.x - initialPosition.x) >= moveDistance)
+            if (transform.position == targetPosition)
             {
-                moveDirection *= -1;
-
-                yield return new WaitForSeconds(0.5f); 
+                movingRight = false;
             }
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, initialPosition, step);
 
-            yield return null;
+            if (transform.position == initialPosition)
+            {
+                movingRight = true;
+            }
         }
     }
 }
