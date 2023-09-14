@@ -45,13 +45,6 @@ public class MazeGameController : MonoBehaviour
     {
         cherriesCollected++;
         Destroy(cherry);
-        if (cherriesCollected < 3)
-        {
-            PlaceCherries(1); 
-        }
-        else
-        {
-            Debug.Log("Congratulations! You collected all cherries!");
-        }
+     
     }
 }
